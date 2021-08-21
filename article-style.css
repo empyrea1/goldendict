@@ -1,5 +1,4 @@
-/* Global, non-dictionary-specific classes */
-
+/************* Global, non-dictionary-specific classes *************/
 body {
   background: #000000;
   color: #d3d3d3;
@@ -56,7 +55,7 @@ pre
 .gddictname {
   font-size: 14px;
   font-weight: normal;
-  border: 1px solid gray;
+  border: 1px solid #202020;
   float: right;
   margin-top: 0;
 }
@@ -82,6 +81,7 @@ pre
  
 /* Appears between the articles */
 .gdarticleseparator {
+  display: none;
 }
 
 /* Dictionary query error description string */
@@ -93,7 +93,7 @@ pre
   margin: 1em;
 }
 
-/********* Babylon dictionaries' classes *********/
+/************* Babylon dictionaries' classes *************/
 
 /* Transcriptions in Babylon dictionaries */
 .bgltrn:before
@@ -173,7 +173,7 @@ div.sdct_x
   display: inline-block;
 }
 
-/******** XDXF markup classes *********/
+/************* XDXF markup classes *************/
 
 div.xdxf
 {
@@ -336,7 +336,7 @@ div.xdxf
   color: #808080;
 }
 
-/******** SDictionary markup classes *********/
+/************* SDictionary markup classes *************/
 
 .sdict_forms
 {
@@ -359,7 +359,7 @@ div.xdxf
   font-weight: bold;
 }
 
-/************* LSA audio archives **************/
+/************* LSA audio archives *************/
 
 /* A table which contains a play icon and a word's link */
 .lsa_play
@@ -527,7 +527,19 @@ div.xdxf
   padding-left: 5px;
 }
 
-/************* MDict dictionaries **************/
+/************* Zim dictionaries *************/
+
+.zimdict
+{
+  font-size: 110%!important;
+}
+
+.zimdict_headword
+{
+  font-weight: bold!important;
+}
+
+/************* MDict dictionaries *************/
 .mdict
 {
   margin-top: 1em;
@@ -539,16 +551,151 @@ div.xdxf
   color: inherit;
 }
 
-/************* Zim dictionaries **************/
-
-.zimdict
-{
-  font-size: 110%!important;
+/************* OALD9 Dictionary *************/
+.mdict font,
+.mdict i,
+.mdict ol,
+.head-jump-pos,
+.head-jump-entry,
+.h-g,
+.sn-gs,
+.sn-g,
+.x-gs,
+.xg,
+.rx-g,
+.x,
+.num,
+.def,
+.label-g,
+.collapse {
+  color: #a3a3a3;
 }
 
-.zimdict_headword
-{
-  font-weight: bold!important;
+.head-jump-pos a {
+  display: inline-block;
+  background-color: green;
+  color: gainsboro;
+  padding-top: 2px;
+  padding-bottom: 3px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin-right: 3px;
+  margin-bottom: 3px;
+  text-decoration: none;
+  font-size: 90%;
+  border-radius: 2px;
+}
+
+.mdict .if-gs {
+  color: #e7003e;
+}
+
+.mdict .gram-g {
+  color: #ff7400;
+}
+
+.mdict .top-container {
+  line-height: 1.2em;
+}
+
+.mdict .collapse,
+.mdict .webtop-g {
+  background-color: #03a9f4;
+  border-left: 3px solid #03a9f4;
+}
+
+.mdict .collapse .body .h1,
+.mdict .collapse .body .deflist .li .eb {
+  color: #d32f2f;
+}
+
+.mdict .collapse .body .inline .li {
+  color: #512da8;
+}
+
+/* Fix numbered list */
+.mdict ol {
+  list-style-type: none;
+}
+
+.mdict ol li {
+  counter-increment: step-counter;
+}
+
+.mdict ol li::before {
+  content: counter(step-counter);
+  color: #e7003e;
+  font-weight: bold;
+}
+
+/* Fix phonetics */
+
+.mdict .phon {
+  color: #e7003e;
+  font-weight: bold;
+}
+
+/************* Longman Dictionary 6 *************/
+.entry,
+.example,
+.collocate,
+.collgloss,
+.sense,
+.neutral,
+.exas li {
+  color: gainsboro;
+}
+
+.hyphenation,
+.homnum,
+.frequent {
+  color: #ffeb3b;
+}
+
+.pron,
+.amevarpron {
+  color: #d32f2f;
+  font-weight: bold;
+}
+
+.gram,
+.registerlab {
+  color: blue;
+}
+
+.propformprep,
+.expr,
+.colloc,
+.collo,
+.exp,
+.display,
+.nodeword {
+  color: red;
+}
+
+.sensenum {
+  color: red;
+}
+
+.collobox {
+  background-color: #00348f;
+  border-color: #448aff;
+}
+
+.thesbox {
+  background-color: #ffeb3b;
+  border-color: #ffeb3b;
+}
+
+.grambox .expl,
+.grambox .compareword,
+.collobox .section,
+.thesbox .section {
+  background-color: #201f1f;
+}
+
+.secheading {
+  background-color: #00348f;
 }
 
 /************* Spelling suggestions *****************/
@@ -2908,6 +3055,13 @@ in bg url to hide it from iemac */
 .mwiki .infl-table { display: none }
 /****default hide dict icon ***/
 .gddicticon{display:none;}
+.gddicticon {
+  display: inline;
+  vertical-align: text-bottom;
+  float: right;
+  padding-right: 0em;
+  padding-left: 0.3em;
+}
 
 .gdexpandicon {
     cursor:pointer;
