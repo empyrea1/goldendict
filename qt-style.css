@@ -1,14 +1,36 @@
 MainWindow #translateLine, ScanPopup #translateLine, MainWindow #wordList, MainWindow #dictsPane #dictsList, MainWindow #historyPane #historyList, MainWindow #favoritesPane #favoritesTree
+
 {
-  background: #fefdeb;
-  color: black;
+    background: #000000;
+    color: #D3D3D3;
 }
 
-MainWindow #translateLine[noResults="true"],
-ScanPopup #translateLine[noResults="true"]
+ArticleView #searchText[noResults="true"],
+MainWindow #translateLine[noResults="true"]
 {
-  background: #febb7d;
+    background: red;
+    color: white;
+
 }
+
+ArticleView #searchText
+{
+    background: #000000;
+    color: #D3D3D3;  
+}
+
+QGroupBox #dictionaryDescription, QGroupBox #dictionaryFileList
+
+{
+
+    background: #000000;
+
+    border: 1px solid #303030;
+
+    color: #D3D3D3;
+
+}
+
 
 #navToolbar #menuButton::menu-indicator {
   image: none;
@@ -60,11 +82,6 @@ ScanPopup #translateLine[noResults="true"]
 #navToolbar GroupComboBox::down-arrow:on { /* shift the arrow when popup is open */
    top: 1px;
    left: 1px;
-}
-
-ArticleView #searchText[noResults="true"]
-{
-  background: #febb7d;
 }
 
 MainStatusBar #text
