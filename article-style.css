@@ -1,11 +1,22 @@
-/******** Global, non-dictionary-specific classes ***********/
+/* Global, non-dictionary-specific classes */
 
+body {
+  background: #000000;
+  color: #d3d3d3;
+  font-family: Arial, Helvetica, Tahoma, Verdana, "Lucida Sans Unicode", sans-serif;
+  font-size: 0.8rem;
+}
 
-body
-{
-  background: #fefdeb;
-  font-family: Tahoma, Verdana, "Lucida Sans Unicode", sans-serif;
-  font-size: 13px;
+a:link {
+  color: orange;
+}
+
+a:hover {
+  color: red;
+}
+
+ul {
+  color: #d3d3d3;
 }
 
 /* This stylesheet is used to highligh current selection when doing a search.
@@ -14,8 +25,12 @@ body
 /* highlight/select color in Windows when a widget is inactive is nearly impossible to read (light gray).
  * then change it to green to use with the find option. */
 ::selection {
-  background: #c00;
-  color: #fff;
+  background: red;
+  color: gainsboro;
+}
+
+code::selection {
+  background: gainsboro;
 }
 
 /* Don't allow to select [] */
@@ -28,48 +43,45 @@ body
  * of space. We try to use smaller fonts for them therefore. */
 pre
 {
-  font-size: 12px;
+  font-size: 1.2rem;
 }
 
 /* Dictionary's name heading */
-.gddictname
+/* .gddictname
 {
-  border: 1px dotted black; padding: 0.2em; padding-left: 0.5em;
+   padding: 0.2em; padding-left: 0.5em;
   margin-top: 1.2em; margin-bottom: 9px; font-weight: bold; font-size: 14px;
-  /*background: #ffffdd;*/
+} */
+
+.gddictname {
+  font-size: 14px;
+  font-weight: normal;
+  border: 1px solid gray;
+  float: right;
+  margin-top: 0;
 }
 
 /* The 'From ' string which precedes dictionary name in the heading */
-.gdfromprefix
-{
+.gdfromprefix {
 }
 
 /* The article span. Here we have a padding/margin hack to make fragment links
    behave better (have some space before the start of article) */
-.gdarticle
-{
-  display: block;
-  padding-top: 1px;
-  margin-top: -8px;
-  margin-bottom: 8px;
-  background: #fefdeb;
-/*fix for invalid blg*/
-  font-style:normal;
+.gdarticle {
+  background: #000000;
+  color: #d3d3d3;
+  margin-top: 0.4rem;
+  margin-bottom: 0.4rem;
+  padding: 5px;
+  border: 1px solid #303030;
 }
 
-/* CSS trick to prevent the floating elements to overflow
-   the article boundaries, see Issue #333. */
-.gdarticle:after
-{
-   content: "";
-   display: block;
-   height: 0;
-   clear: both;
+.gdactivearticle {
+  border: 1px solid #3399ff;
 }
-
+ 
 /* Appears between the articles */
-.gdarticleseparator
-{
+.gdarticleseparator {
 }
 
 /* Dictionary query error description string */
