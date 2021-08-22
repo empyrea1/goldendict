@@ -1391,9 +1391,6 @@
     <None Include="article-style-st-modern.css">
       <Filter>Resources\CSS</Filter>
     </None>
-    <None Include="article-style-st-wiki.css">
-      <Filter>Resources\CSS</Filter>
-    </None>
     <None Include="article-style.css">
       <Filter>Resources\CSS</Filter>
     </None>
