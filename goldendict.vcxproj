@@ -1012,7 +1012,6 @@
     <None Include="article-style-st-lingoes.css" />
     <None Include="article-style-st-lingvo.css" />
     <None Include="article-style-st-modern.css" />
-    <None Include="article-style-st-wiki.css" />
     <None Include="article-style.css" />
     <None Include="flags\as.png" />
     <None Include="flags\at.png" />
