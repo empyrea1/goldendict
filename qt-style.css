@@ -19,17 +19,13 @@ ArticleView #searchText {
   color: #d3d3d3;
 }
 
-QGroupBox #dictionaryDescription,
-QGroupBox #dictionaryFileList,
-QDialog #infoLabel,
-QDialog #dictionaryFileList {
+OrderAndProps #dictionaryDescription,
+OrderAndProps #dictionaryFileList,
+DictInfo #infoLabel,
+DictInfo #dictionaryFileList {
   background: #000000;
   border: 1px solid #303030;
   color: #d3d3d3;
-}
-
-#navToolbar #menuButton::menu-indicator {
-  image: none;
 }
 
 #navToolbar #translateLine {
