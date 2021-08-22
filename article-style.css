@@ -18,11 +18,7 @@ ul {
   color: #d3d3d3;
 }
 
-/* This stylesheet is used to highligh current selection when doing a search.
-  It changes the default selection color (e.g. blue under Windows, orange under Ubuntu) */
-
-/* highlight/select color in Windows when a widget is inactive is nearly impossible to read (light gray).
- * then change it to green to use with the find option. */
+/* Highlight current selection when doing a search. */
 ::selection {
   background: red;
   color: gainsboro;
@@ -38,20 +34,7 @@ code::selection {
   user-select: none;
 }
 
-/* Plaintext dictionaries are usually 80-column formatted and take a lot
- * of space. We try to use smaller fonts for them therefore. */
-pre
-{
-  font-size: 1.2rem;
-}
-
-/* Dictionary's name heading */
-/* .gddictname
-{
-   padding: 0.2em; padding-left: 0.5em;
-  margin-top: 1.2em; margin-bottom: 9px; font-weight: bold; font-size: 14px;
-} */
-
+/* Dictionary name heading */
 .gddictname {
   font-size: 14px;
   font-weight: normal;
@@ -62,6 +45,7 @@ pre
 
 /* The 'From ' string which precedes dictionary name in the heading */
 .gdfromprefix {
+  color: #444444;
 }
 
 /* The article span. Here we have a padding/margin hack to make fragment links
@@ -375,6 +359,10 @@ div.xdxf
 
 /************* DSL dictionaries **************/
 
+.dsl_i font {
+  color: deepskyblue;
+}
+
 .dsl_u
 {
   text-decoration: underline;
@@ -552,8 +540,7 @@ div.xdxf
 }
 
 /************* OALD9 Dictionary *************/
-.mdict font,
-.mdict i,
+.mdict,
 .mdict ol,
 .head-jump-pos,
 .head-jump-entry,
@@ -569,6 +556,10 @@ div.xdxf
 .label-g,
 .collapse {
   color: #a3a3a3;
+}
+
+.mdict i {
+  color: #a3a3a3 !important;
 }
 
 .head-jump-pos a {
@@ -633,6 +624,11 @@ div.xdxf
 .mdict .phon {
   color: #e7003e;
   font-weight: bold;
+}
+
+/************* Langenscheidt Grosswoerterbuch: Deutsch als Fremdsprache *************/
+deutsch, die {
+  color: #a3a3a3;
 }
 
 /************* Longman Dictionary 6 *************/
