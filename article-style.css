@@ -636,6 +636,16 @@ div.xdxf
 }
 
 /************* Longman Dictionary 6 *************/
+.popup-button {
+background-color:#333333 !important;
+color:#ffffff !important;
+}
+
+.popup-button:hover {
+background-color:#ffffff !important;
+color:#000000 !important;
+}
+
 .entry,
 .example,
 .collocate,
@@ -691,11 +701,11 @@ div.xdxf
 .grambox .compareword,
 .collobox .section,
 .thesbox .section {
-  background-color: #201f1f;
+  background-color: #000000 !important;
 }
 
 .secheading {
-  background-color: #00348f;
+  background-color: #4f008f !important;
 }
 
 /************* Spelling suggestions *****************/
