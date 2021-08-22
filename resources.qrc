@@ -17,6 +17,7 @@
         <file>icons/programs.png</file>
         <file>icons/wizard.png</file>
         <file>icons/warning.png</file>
+        <file>article-style-wiki.css</file>
         <file>article-style.css</file>
         <file>article-style-print.css</file>
         <file>qt-style.css</file>
