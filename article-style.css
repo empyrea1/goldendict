@@ -102,7 +102,7 @@ code::selection {
   border: 1px solid #5376ac;
 }
 
-/* Move the collapse/expand buttons to the right, 3rd position */
+/* Move the collapse/expand buttons to the right */
 .collapse_expand_area
 {
   display: inline-block;
