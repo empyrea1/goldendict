@@ -1,101 +1,189 @@
-a 
+/************* Dictd articles *****************/
+.dictd_article
 {
-  color: #2233bb;
-  text-decoration: none;
-}
-
-a:hover
-{
-  color: #6677ff;
-}
-
-::selection
-{
-  background: #3399ff;
-  color: white;
-}
-
-body
-{
-  background: #fffef2;
-  color: black;
-  font-family: Tahoma, Verdana, SimSun, SimSun-ExtB, sans-serif;
-  margin: 5px;
-}
-
-.gdarticle
-{
-  background: #fffef2;
-  margin-top: -8px;
-  position: relative;
-}
-
-.gddicticon
-{
-  display: inline;
-  margin-left: -3px;
-  padding-right: 5px;
-}
-
-.gddicticon img
-{
-  border: 0px;
-  height: 16px;
-  vertical-align: text-top;
-}
-
-.gdfromprefix
-{
-  display: none;
-}
-
-.gddictname
-{
-  display: inline-block;
-  border: 1px solid #92b0dd;
-  padding: 0.2em;
-  padding-left: 0.5em;
-  padding-right: 0.5em;
+  /* Add some vertical space before the article */
   margin-top: 1em;
-  margin-bottom: -0.1em;
-  background: #cfddf0;
-  color: #000080;
-  font-weight: normal;
-  font-size: 12px;
 }
 
-.collapse_expand_area
+.dictd_phonetic:before, .dictd_phonetic:after
 {
-  position: absolute;
-  right: 0px;
+  content: "\\";
+  font-style: normal;
 }
 
-.gdexpandicon, .gdexpandicon:hover, .gdcollapseicon, .gdcollapseicon:hover
+.dictd_phonetic:after
 {
-  background-position: center 35%;
-  background-repeat:no-repeat;
+  margin-left: 3px;
 }
 
-
-.gdexpandicon {
-  background-image: url('qrcx://localhost/icons/expand_article.png');
-}
-
-.gdexpandicon:hover {
-  background-image: url('qrcx://localhost/icons/expand_article_hovered.png');
-}
-
-.gdcollapseicon {
-  background-image: url('qrcx://localhost/icons/collapse_article.png');
-}
-
-.gdcollapseicon:hover {
-  background-image: url('qrcx://localhost/icons/collapse_article_hovered.png');
-}
-
-.gddictnamebodyseparator
+.dictd_phonetic
 {
+  font-style: italic;
+  color: #009900;
+}
+
+.dictd_article a:link
+{
+  color: #0000FF;
+}
+
+.dictserver_from
+{
+  font-size: 110%;
+  font-weight: 600;
+}
+
+/************* Epwing dictionaries *****************/
+
+.epwing_narrow_font
+{
+  width: 7px;
+  height: 13px;
+  vertical-align: -15%;
+}
+
+.epwing_wide_font
+{
+  width: 13px;
+  height: 13px;
+  vertical-align: -15%;
+}
+
+.epwing_article
+{
+  display:inline;
+}
+
+/********** Slob dictionaries ***********/
+
+.slobdict img.imgtex
+{
+    vertical-align: baseline !important;
+}
+
+/************* GLS dictionaries **************/
+
+.glsdict_headwords
+{
+  font-weight: bold;
+  margin-top: 15px;
+  margin-bottom: 10px;
+  font-size: 116%;
+}
+
+.gls_wav img
+{
+  /* Ugly hack since "vertical-align: middle;" looks _terrible_ in Qt4's webkit: */
+  vertical-align: -30%;
+}
+
+/************* Zim dictionaries *************/
+
+.zimdict
+{
+  font-size: 110%!important;
+}
+
+.zimdict_headword
+{
+  font-weight: bold!important;
+}
+
+/************* MDict dictionaries *************/
+.mdict
+{
+  margin-top: 1em;
+}
+
+.mdict a[name]
+{
+  text-decoration: none;
+  color: inherit;
+}
+
+/************* OALD9 Dictionary *************/
+.mdict,
+.mdict ol,
+.head-jump-pos,
+.head-jump-entry,
+.h-g,
+.sn-gs,
+.sn-g,
+.x-gs,
+.xg,
+.rx-g,
+.x,
+.num,
+.def,
+.label-g,
+.collapse {
+  color: #a3a3a3;
+}
+
+.mdict i {
+  color: #a3a3a3 !important;
+}
+
+.head-jump-pos a {
   display: inline-block;
-  width: 100%;
-  border-top: 1px solid #92b0dd;
+  background-color: green;
+  color: gainsboro;
+  padding-top: 2px;
+  padding-bottom: 3px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin-right: 3px;
+  margin-bottom: 3px;
+  text-decoration: none;
+  font-size: 90%;
+  border-radius: 2px;
+}
+
+.mdict .if-gs {
+  color: #e7003e;
+}
+
+.mdict .gram-g {
+  color: #ff7400;
+}
+
+.mdict .top-container {
+  line-height: 1.2em;
+}
+
+.mdict .collapse,
+.mdict .webtop-g {
+  background-color: #03a9f4;
+  border-left: 3px solid #03a9f4;
+}
+
+.mdict .collapse .body .h1,
+.mdict .collapse .body .deflist .li .eb {
+  color: #d32f2f;
+}
+
+.mdict .collapse .body .inline .li {
+  color: #512da8;
+}
+
+/* Fix numbered list */
+.mdict ol {
+  list-style-type: none;
+}
+
+.mdict ol li {
+  counter-increment: step-counter;
+}
+
+.mdict ol li::before {
+  content: counter(step-counter);
+  color: #e7003e;
+  font-weight: bold;
+}
+
+/* Fix phonetics */
+
+.mdict .phon {
+  color: #e7003e;
+  font-weight: bold;
 }
