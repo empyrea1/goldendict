@@ -2,7 +2,7 @@
 body {
   background: #000000;
   color: #d3d3d3;
-  font-family: Arial, Helvetica, Tahoma, Verdana, "Lucida Sans Unicode", sans-serif;
+  font-family: Arial, Helvetica, Tahoma, Verdana, "Lucida Sans Unicode", "Segoe UI", "Palatino Linotype", "Arial Unicode MS", sans-serif;
   font-size: 0.8rem;
 }
 
@@ -18,7 +18,7 @@ ul {
   color: #d3d3d3;
 }
 
-/* Highlight current selection when doing a search. */
+/* Highlight current selection */
 ::selection {
   background: red;
   color: gainsboro;
@@ -43,13 +43,45 @@ code::selection {
   margin-top: 0;
 }
 
-/* The 'From ' string which precedes dictionary name in the heading */
+/* Text in dictionary title */
+.gddicttitle
+{
+  display: inline-block;
+  color: deepskyblue;
+}
+
+/* Separates dictionary title from article */
+.gddictnamebodyseparator
+{
+  display: inline-block;
+  width: 100%;
+  border-top: 1px solid #444444;
+  padding-bottom: 0.1rem;
+}
+
+/* 'From' string before dictionary name */
 .gdfromprefix {
   color: #444444;
 }
 
-/* The article span. Here we have a padding/margin hack to make fragment links
-   behave better (have some space before the start of article) */
+/* Dictionary icon */
+.gddicticon
+{
+  display: inline;
+  float: right;
+  vertical-align: text-bottom;
+  padding-right: 0em;
+  padding-left: 0.3em;
+}
+
+.gddicticon img
+{
+  border: 0px;
+  height: 16px;
+  vertical-align: text-top;
+}
+
+/* The article span. Here we have padding/margin for fragment links */
 .gdarticle {
   background: #000000;
   color: #d3d3d3;
@@ -65,7 +97,58 @@ code::selection {
  
 /* Appears between the articles */
 .gdarticleseparator {
-  display: none;
+  display: inline-block;
+  width: 100%;
+  border: 1px solid #5376ac;
+}
+
+/* Move the collapse/expand buttons to the right, 3rd position */
+.collapse_expand_area
+{
+  display: inline-block;
+  right: 0px;
+}
+
+/* Nice diagonal pattern for the collapsed article */
+.gdcollapsedarticle
+{
+	background-color: #303030;
+	background-size: 50px 50px;
+}
+
+.gdexpandicon, .gdexpandicon:hover, .gdcollapseicon, .gdcollapseicon:hover
+{
+    cursor: pointer;
+    width: 16px;
+    background-position: center;
+    background-repeat:no-repeat;
+    vertical-align: text-bottom;
+    padding-left: -5px;
+    margin-left: 0px;
+}
+
+.gdexpandicon {
+    background-image: url('qrcx://localhost/icons/expand_article.png');
+}
+
+.gdexpandicon:hover {
+    background-image: url('qrcx://localhost/icons/expand_article_hovered.png');
+}
+
+.gdcollapseicon {
+    background-image: url('qrcx://localhost/icons/collapse_article.png');
+}
+
+.gdcollapseicon:hover {
+    background-image: url('qrcx://localhost/icons/collapse_article_hovered.png');
+}
+
+/* The first headword in a (possibly) multi-headword DSL article */
+.gdarticlebody > div:first-child .dsl_headwords,
+.gdarticlebody > h3:first-child
+{
+  margin-top: -3px;
+  display: inline-block;
 }
 
 /* Dictionary query error description string */
@@ -75,818 +158,4 @@ code::selection {
   background: url("qrcx://localhost/icons/warning.png") center left no-repeat !important;
   padding-left: 22px !important;
   margin: 1em;
-}
-
-/************* Babylon dictionaries' classes *************/
-
-/* Transcriptions in Babylon dictionaries */
-.bgltrn:before
-{
-  content:"[";
-}
-
-.bgltrn:after
-{
-  content:"]";
-}
-
-.bgltrn { display:block; }
-
-/* Part of speech in Babylon dictionaries. Usually irrelevant,
- * therefore hidden */
-.bglpos { display: none; }
-
-/* Right-to-left text */
-.bglrtl
-{
-  text-align: right;
-  direction: rtl;
-}
-
-/******** StarDict dictionaries' classes *********/
-
-
-/* StarDict type 'h' -- Html content. We don't normally do anything here. */
-div.sdct_h
-{
-}
-
-.sdict_h_wav img
-{
-  /* Ugly hack since "vertical-align: middle;" looks _terrible_ in Qt4's webkit: */
-  vertical-align: -30%;
-}
-
-/* StarDict type 'm' -- Pure meaning. Presented as <pre> */
-pre.sdct_m
-{
-}
-
-/* StarDict type 'l' -- Pure meaning which used to be in locale encoding. */
-pre.sdct_m
-{
-}
-
-/* StarDict type 'g' -- Pango Markup */
-div.sdct_g
-{
-}
-
-/* StarDict type 't' -- Transcription */
-div.sdct_t
-{
-  font-weight: bold;
-}
-
-/* StarDict type 'y' -- Chinese YinBiao or Japanese KANA */
-div.sdct_y
-{
-}
-
-/* StarDict type 'x'. Should have xdxf_*-styled elements inside */
-div.sdct_x
-{
-}
-
-/* Blockquotes in XDXF-styled elements are used
-   for indentation purposes, see Issue #305. */
-.sdct_x blockquote
-{
-  margin: 0px;
-  padding-left: 9px;
-  display: inline-block;
-}
-
-/************* XDXF markup classes *************/
-
-div.xdxf
-{
-}
-
-/* Key -- keys shouldn't normally be present in the article's body since they
- * are accounted for separately, hence we hide them */
-.xdxf_k
-{
-  display: none;
-}
-
-/* ...and if there's a break after it, we hide it too so we don't have an
- * extra vertical spacing. */
-.xdxf_k + br
-{
-  display: none;
-}
-
-/* Article structure tag */
-.xdxf_num
-{
-    color: red;
-    font-weight: bold;
-    padding-left:-15px;
-}
-.xdxf_def
-{
-    display: block;
-    border-color: #e3e3e3;
-    border-width: 1px;
-    border-style: dashed;
-    margin: 1px;
-    margin-left: 15px;
-}
-
-.xdxf_def:target
-{
-    /* this pseudoclass is used to marked out the referenced <def> that was just clicked */
-    border-color: red;
-    border-width: 1px;
-    border-style: double;
-}
-
-/* Abbreviation */
-.xdxf_abbr
-{
-  font-style: italic;
-  color: seagreen;
-  cursor: default;
-  border-bottom: 1px seagreen dotted;
-}
-
-/* Editorial comment */
-.xdxf_co, .xdxf_co_old
-{
-    color: darkslateblue;
-    font-style: italic;
-}
-.xdxf_co:before
-{
-    content:"("
-}
-.xdxf_co:after
-{
-    content:")"
-}
-
-/* Grammar information */
-.xdxf_gr
-{
-    color: orangered;
-    display: block;
-}
-
-.xdxf_gr_old
-{
-    color: blue; /*orangered;*/
-}
-
-/* Example */
-.xdxf_ex
-{
-    color: #808080;
-    display: block;
-    margin-left: 14px;
-}
-
-.xdxf_ex_old
-{
-    color: #808080;
-}
-
-.xdxf_ex_source:before
-{
-    content:"["
-}
-.xdxf_ex_source:after
-{
-    content:"]"
-}
-
-.xdxf_ex_tran:before
-{
-    content:"— "
-}
-
-.xdxf_ex_tran
-{
-    font-style: italic;
-}
-
-/* Direct translation */
-.xdxf_dtrn
-{
-    font-weight: bold;
-    color: #dd7800;
-}
-
-/* Transcription */
-.xdxf_tr:before
-{
-  content:"[";
-}
-
-.xdxf_tr:after
-{
-  content:"]";
-}
-
-.xdxf_tr, .xdxf_tr_old
-{
-  font-weight: bold;
-}
-
-/* Resource reference -- for now just a span. Since there's not yet a mechanism
- * to load resources off XDXF articles in GoldenDict, we just hide them. */
-.xdxf_rref
-{
-  display: none;
-}
-
-.xdxf_headwords
-{
-  font-size: 116%;
-  font-weight: bold;
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-
-/* The words in examples that are meaked out; they are marked out only when placed into <ex> tag */
-.xdxf_ex .xdxf_ex_markd, .xdxf_ex_old .xdxf_ex_markd
-{
-  color:black;
-  background-color:lightgray;
-}
-
-.xdxf_opt
-{
-  color: #808080;
-}
-
-/************* SDictionary markup classes *************/
-
-.sdict_forms
-{
-  font-style: italic;
-}
-
-/* Transcription */
-.sdict_tr:before
-{
-  content:"[";
-}
-
-.sdict_tr:after
-{
-  content:"] ";
-}
-
-.sdict_tr
-{
-  font-weight: bold;
-}
-
-/************* LSA audio archives *************/
-
-/* A table which contains a play icon and a word's link */
-.lsa_play
-{
-  margin-top: 8px;
-  margin-left: 8px;
-}
-
-.lsa_play a
-{
-  text-decoration: none;
-}
-
-/************* DSL dictionaries **************/
-
-.dsl_i font {
-  color: deepskyblue;
-}
-
-.dsl_u
-{
-  text-decoration: underline;
-}
-
-.dsl_article
-{
-  display:inline;
-}
-
-.dsl_article font[color=c_default_color]
-{
-  color: green;
-}
-
-.dsl_m, .dsl_m0
-{
-  padding-left: 0px;
-}
-
-.dsl_m1
-{
-  padding-left: 9px;
-}
-
-.dsl_m2
-{
-  padding-left: 18px;
-}
-
-.dsl_m3
-{
-  padding-left: 27px;
-}
-
-.dsl_m4
-{
-  padding-left: 36px;
-}
-
-.dsl_m5
-{
-  padding-left: 45px;
-}
-
-.dsl_m6
-{
-  padding-left: 54px;
-}
-
-.dsl_m7
-{
-  padding-left: 63px;
-}
-
-.dsl_m8
-{
-  padding-left: 72px;
-}
-
-.dsl_m9
-{
-  padding-left: 81px;
-}
-
-.dsl_p, .dsl_p :not(a) /* DSL Feature: Enforce the style even if the children tags say otherwise, except links */
-{
-  color: green !important; /* DSL label color must have highest priority */
-  font-style: italic;
-  cursor: default;
-  font-weight: normal; /* DSL feature: labels are always of normal weight */
-}
-
-.dsl_stress_without_accent {
-  display: none;
-}
-
-.dsl_t
-{
-  font-weight: bold;
-}
-
-.dsl_headwords
-{
-  font-weight: bold;
-  margin-top: 15px;
-  margin-bottom: 10px;
-}
-
-.dsl_headwords p
-{
-  font-weight: bold;
-  font-size: 15px;
-  margin: 0;
-}
-
-.dsl_definition p
-{
-  margin: 0;
-}
-
-.dsl_opt
-{
-  display: none;
-}
-
-.dsl_opt,
-.dsl_opt .dsl_ex,
-.dsl_opt .dsl_ex :not(a),
-.dsl_opt .dsl_ex font[color] /* DSL Feature: Enforce the optional zone color even if the children tags say otherwise */
-{
-  color: gray;
-}
-
-.dsl_ex, .dsl_ex .dsl_opt
-{
-  color: gray;
-}
-
-/* Style for expand optional parts button */
-.hidden_expand_opt
-{
-  color: blue;
-  cursor: pointer;
-  vertical-align: text-bottom;
-}
-
-.dsl_s_wav img
-{
-  /* Ugly hack since "vertical-align: middle;" looks _terrible_ in Qt4's webkit: */
-  vertical-align: -30%;
-}
-
-.dsl_video .img
-{
-  display: inline-block;
-  background: url('qrcx://localhost/icons/video.png');
-  background-repeat: no-repeat;
-  /* Ugly hack since "vertical-align: middle;" looks _terrible_ in Qt4's webkit: */
-  vertical-align: -30%;
-  width: 22px;
-  height: 22px;
-  margin: 0;
-  padding: 0;
-}
-
-.dsl_video .filename
-{
-  display: none; /* by default, the file name is hidden */
-  padding-left: 5px;
-}
-
-/************* Zim dictionaries *************/
-
-.zimdict
-{
-  font-size: 110%!important;
-}
-
-.zimdict_headword
-{
-  font-weight: bold!important;
-}
-
-/************* MDict dictionaries *************/
-.mdict
-{
-  margin-top: 1em;
-}
-
-.mdict a[name]
-{
-  text-decoration: none;
-  color: inherit;
-}
-
-/************* OALD9 Dictionary *************/
-.mdict,
-.mdict ol,
-.head-jump-pos,
-.head-jump-entry,
-.h-g,
-.sn-gs,
-.sn-g,
-.x-gs,
-.xg,
-.rx-g,
-.x,
-.num,
-.def,
-.label-g,
-.collapse {
-  color: #a3a3a3;
-}
-
-.mdict i {
-  color: #a3a3a3 !important;
-}
-
-.head-jump-pos a {
-  display: inline-block;
-  background-color: green;
-  color: gainsboro;
-  padding-top: 2px;
-  padding-bottom: 3px;
-  padding-left: 5px;
-  padding-right: 5px;
-  margin-right: 3px;
-  margin-bottom: 3px;
-  text-decoration: none;
-  font-size: 90%;
-  border-radius: 2px;
-}
-
-.mdict .if-gs {
-  color: #e7003e;
-}
-
-.mdict .gram-g {
-  color: #ff7400;
-}
-
-.mdict .top-container {
-  line-height: 1.2em;
-}
-
-.mdict .collapse,
-.mdict .webtop-g {
-  background-color: #03a9f4;
-  border-left: 3px solid #03a9f4;
-}
-
-.mdict .collapse .body .h1,
-.mdict .collapse .body .deflist .li .eb {
-  color: #d32f2f;
-}
-
-.mdict .collapse .body .inline .li {
-  color: #512da8;
-}
-
-/* Fix numbered list */
-.mdict ol {
-  list-style-type: none;
-}
-
-.mdict ol li {
-  counter-increment: step-counter;
-}
-
-.mdict ol li::before {
-  content: counter(step-counter);
-  color: #e7003e;
-  font-weight: bold;
-}
-
-/* Fix phonetics */
-
-.mdict .phon {
-  color: #e7003e;
-  font-weight: bold;
-}
-
-/************* Langenscheidt Grosswoerterbuch: Deutsch als Fremdsprache *************/
-deutsch, die {
-  color: #a3a3a3;
-}
-
-/************* Longman Dictionary 6 *************/
-.popup-button {
-background-color:#333333 !important;
-color:#ffffff !important;
-}
-
-.popup-button:hover {
-background-color:#ffffff !important;
-color:#000000 !important;
-}
-
-.entry,
-.example,
-.collocate,
-.collgloss,
-.sense,
-.neutral,
-.exas li {
-  color: gainsboro;
-}
-
-.hyphenation,
-.homnum,
-.frequent {
-  color: #ffeb3b;
-}
-
-.pron,
-.amevarpron {
-  color: #d32f2f;
-  font-weight: bold;
-}
-
-.gram,
-.registerlab {
-  color: blue;
-}
-
-.propformprep,
-.expr,
-.colloc,
-.collo,
-.exp,
-.display,
-.nodeword {
-  color: red;
-}
-
-.sensenum {
-  color: red;
-}
-
-.collobox {
-  background-color: #00348f;
-  border-color: #448aff;
-}
-
-.thesbox {
-  background-color: #ffeb3b;
-  border-color: #ffeb3b;
-}
-
-.grambox .expl,
-.grambox .compareword,
-.collobox .section,
-.thesbox .section {
-  background-color: #000000 !important;
-}
-
-.secheading {
-  background-color: #4f008f !important;
-}
-
-/************* Spelling suggestions *****************/
-
-.gdspellsuggestion
-{
-  /* Add some vertical space before the article */
-  margin-top: 1em;
-}
-
-/************* Stemmed suggestions *****************/
-
-.gdstemmedsuggestion
-{
-  /* Add some horizontal and vertical space */
-  margin-top: 1em;
-  margin-left: 1px;
-}
-
-
-.gdstemmedsuggestion_head
-{
-  margin-left: 11px;
-  font-style: italic;
-}
-
-.gdstemmedsuggestion_body
-{
-}
-
-/************* Dictd articles *****************/
-.dictd_article
-{
-  /* Add some vertical space before the article */
-  margin-top: 1em;
-}
-
-.dictd_phonetic:before, .dictd_phonetic:after
-{
-  content: "\\";
-  font-style: normal;
-}
-
-.dictd_phonetic:after
-{
-  margin-left: 3px;
-}
-
-.dictd_phonetic
-{
-  font-style: italic;
-  color: #009900;
-}
-
-.dictd_article a:link
-{
-  color: #0000FF;
-}
-
-.dictserver_from
-{
-  font-size: 110%;
-  font-weight: 600;
-}
-
-/************* Epwing dictionaries *****************/
-
-.epwing_narrow_font
-{
-  width: 7px;
-  height: 13px;
-  vertical-align: -15%;
-}
-
-.epwing_wide_font
-{
-  width: 13px;
-  height: 13px;
-  vertical-align: -15%;
-}
-
-.epwing_article
-{
-  display:inline;
-}
-
-/************* Websites *****************/
-
-.website_padding
-{
-  height: 1em;
-  clear:both;
-}
-
-/************* Forvo **************/
-
-.forvo_headword
-{
-  margin-top: 15px;
-  margin-bottom: 10px;
-  font-weight: bold;
-  font-size: 15px;
-}
-
-/* A table which contains a play icon and information about the sound */
-.forvo_play
-{
-  margin-top: 8px;
-  margin-left: 8px;
-}
-
-.forvo_user
-{
-  text-decoration: none;
-  color: green;
-}
-
-.forvo_location
-{
-  color: grey;
-}
-
-.forvo_positive_votes
-{
-  font-weight: bold;
-  color: green;
-}
-
-.forvo_negative_votes
-{
-  font-weight: bold;
-  color: red;
-}
-
-/************* Programs **************/
-
-/* A table which contains a play icon and a word's link */
-.programs_play
-{
-  margin-top: 8px;
-  margin-left: 8px;
-}
-
-.programs_play a
-{
-  text-decoration: none;
-}
-
-.programs_plaintext, .programs_html
-{
-  margin-top: 15px;
-}
-
-/************* Voice engines **************/
-
-.voiceengines_play
-{
-  margin-top: 8px;
-  margin-left: 8px;
-}
-
-.voiceengines_play a
-{
-  text-decoration: none;
-}
-
-/********** Slob dictionaries ***********/
-
-.slobdict img.imgtex
-{
-    vertical-align: baseline !important;
-}
-
-/************* GLS dictionaries **************/
-
-.glsdict_headwords
-{
-  font-weight: bold;
-  margin-top: 15px;
-  margin-bottom: 10px;
-  font-size: 116%;
-}
-
-.gls_wav img
-{
-  /* Ugly hack since "vertical-align: middle;" looks _terrible_ in Qt4's webkit: */
-  vertical-align: -30%;
 }
