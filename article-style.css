@@ -81,7 +81,7 @@ code::selection {
   vertical-align: text-top;
 }
 
-/* The article span. Here we have padding/margin for fragment links */
+/* Padding/margin for fragment links */
 .gdarticle {
   background: #000000;
   color: #d3d3d3;
@@ -102,14 +102,14 @@ code::selection {
   border: 1px solid #5376ac;
 }
 
-/* Move the collapse/expand buttons to the right, 3rd position */
+/* Move the collapse/expand buttons to the right */
 .collapse_expand_area
 {
   display: inline-block;
   right: 0px;
 }
 
-/* Nice diagonal pattern for the collapsed article */
+/* Diagonal pattern for the collapsed article */
 .gdcollapsedarticle
 {
 	background-color: #303030;
@@ -144,7 +144,7 @@ code::selection {
     background-image: url('qrcx://localhost/icons/collapse_article_hovered.png');
 }
 
-/* The first headword in a (possibly) multi-headword DSL article */
+/* The first headword in multi-headword DSL article */
 .gdarticlebody > div:first-child .dsl_headwords,
 .gdarticlebody > h3:first-child
 {
@@ -152,7 +152,7 @@ code::selection {
   display: inline-block;
 }
 
-/* Dictionary query   error description string */
+/* Dictionary query error description string */
 .gderrordesc
 {
   font-style: italic;
@@ -3223,3 +3223,10 @@ in bg url to hide it from iemac */
 
 .mwiki .infl-inline { display: inline }
 .mwiki .infl-table { display: none }
+
+/*************************************************************************************/
+
+/************* Langenscheidt Grosswoerterbuch: Deutsch als Fremdsprache *************/
+deutsch, die {
+  color: #a3a3a3;
+}
