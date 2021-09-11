@@ -218,7 +218,7 @@ div.xdxf
 /* Editorial comment */
 .xdxf_co, .xdxf_co_old
 {
-    color: darkslateblue;
+    color: #8679b1;
     font-style: italic;
 }
 .xdxf_co:before
@@ -532,6 +532,7 @@ div.xdxf
 
 .dsl_t
 {
+	color: #8679b1;
   font-weight: bold;
 }
 
@@ -869,11 +870,10 @@ color:#000000 !important;
 }
 
 /******** StarDict dictionaries' classes *********/
-
 .sdct_h .normal {
 	font-family: Arial;
 	font-size: 10pt;
-	color:#000000;
+	color:#8679b1;
 	font-weight: normal;
 	text-decoration:none;
 }
@@ -889,7 +889,7 @@ color:#000000 !important;
 .sdct_h .orto {
 	font-family: Arial;
 	font-size: 10pt;
-	color:#0000FF;
+	color:#8679b1;
 	font-weight: normal;
 	text-decoration:none;
 }
@@ -964,7 +964,7 @@ color:#000000 !important;
 	float: left;
 	width: 250px;
 	border-style: dashed;
-	border-color:#0033CC;
+	border-color:#8679b1;
 	border-collapse:collapse;
 	border-width:1px;
 	background-color:#eeeeee;
