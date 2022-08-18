@@ -46,7 +46,7 @@ About::About( QWidget * parent ): QDialog( parent )
       QString::fromUtf8(
         creditsFile.readAll() ).split( '\n', QString::SkipEmptyParts );
 
-    QString html = "<html><body style='color: black; background: #f4f4f4;'>";
+    QString html = "<html><body style='color: #d3d3d3; background: #000000;'>";
 
     for( int x = 0; x < creditsList.size(); ++x )
     {
@@ -64,7 +64,7 @@ About::About( QWidget * parent ): QDialog( parent )
 
         name.replace( ", ", "<br>" );
 
-        str = "<font color='blue'>" + name + "</font><br>&nbsp;&nbsp;&nbsp;&nbsp;"
+        str = "<font color='#00BFFF'>" + name + "</font><br>&nbsp;&nbsp;&nbsp;&nbsp;"
               + str.mid( colon + 1 );
       }
 

@@ -1,21 +1,31 @@
-/******** Global, non-dictionary-specific classes ***********/
-
-
-body
-{
-  background: #fefdeb;
-  font-family: Tahoma, Verdana, "Lucida Sans Unicode", sans-serif;
-  font-size: 13px;
+/************* Global, non-dictionary-specific classes *************/
+body {
+  background: #000000;
+  color: #d3d3d3;
+  font-family: Arial, Helvetica, Tahoma, Verdana, "Lucida Sans Unicode", "Segoe UI", "Palatino Linotype", "Arial Unicode MS", sans-serif;
+  font-size: 0.8rem;
 }
 
-/* This stylesheet is used to highligh current selection when doing a search.
-  It changes the default selection color (e.g. blue under Windows, orange under Ubuntu) */
+a:link {
+  color: orange;
+}
 
-/* highlight/select color in Windows when a widget is inactive is nearly impossible to read (light gray).
- * then change it to green to use with the find option. */
+a:hover {
+  color: red;
+}
+
+ul {
+  color: #d3d3d3;
+}
+
+/* Highlight current selection */
 ::selection {
-  background: #c00;
-  color: #fff;
+  background: red;
+  color: gainsboro;
+}
+
+code::selection {
+  background: gainsboro;
 }
 
 /* Don't allow to select [] */
@@ -24,52 +34,122 @@ body
   user-select: none;
 }
 
-/* Plaintext dictionaries are usually 80-column formatted and take a lot
- * of space. We try to use smaller fonts for them therefore. */
-pre
-{
-  font-size: 12px;
+/* Dictionary name heading */
+.gddictname {
+  font-size: 14px;
+  font-weight: normal;
+  border: 1px solid #202020;
+  float: right;
+  margin-top: 0;
 }
 
-/* Dictionary's name heading */
-.gddictname
+/* Text in dictionary title */
+.gddicttitle
 {
-  border: 1px dotted black; padding: 0.2em; padding-left: 0.5em;
-  margin-top: 1.2em; margin-bottom: 9px; font-weight: bold; font-size: 14px;
-  /*background: #ffffdd;*/
+  display: inline-block;
+  color: deepskyblue;
 }
 
-/* The 'From ' string which precedes dictionary name in the heading */
-.gdfromprefix
+/* Separates dictionary title from article */
+.gddictnamebodyseparator
 {
+  display: inline-block;
+  width: 100%;
+  border-top: 1px solid #444444;
+  padding-bottom: 0.1rem;
 }
 
-/* The article span. Here we have a padding/margin hack to make fragment links
-   behave better (have some space before the start of article) */
-.gdarticle
-{
-  display: block;
-  padding-top: 1px;
-  margin-top: -8px;
-  margin-bottom: 8px;
-  background: #fefdeb;
-/*fix for invalid blg*/
-  font-style:normal;
+/* 'From' string before dictionary name */
+.gdfromprefix {
+  color: #444444;
 }
 
-/* CSS trick to prevent the floating elements to overflow
-   the article boundaries, see Issue #333. */
-.gdarticle:after
+/* Dictionary icon */
+.gddicticon
 {
-   content: "";
-   display: block;
-   height: 0;
-   clear: both;
+  display: inline;
+  float: right;
+  vertical-align: text-bottom;
+  padding-right: 0em;
+  padding-left: 0.3em;
+}
+
+.gddicticon img
+{
+  border: 0px;
+  height: 16px;
+  vertical-align: text-top;
+}
+
+/* Padding/margin for fragment links */
+.gdarticle {
+  background: #000000;
+  color: #d3d3d3;
+  margin-top: 0.4rem;
+  margin-bottom: 0.4rem;
+  padding: 5px;
+  border: 1px solid #303030;
+}
+
+.gdactivearticle {
+  border: 1px solid #3399ff;
 }
 
 /* Appears between the articles */
-.gdarticleseparator
+.gdarticleseparator {
+  display: inline-block;
+  width: 100%;
+  border: 1px solid #5376ac;
+}
+
+/* Move the collapse/expand buttons to the right */
+.collapse_expand_area
 {
+  display: inline-block;
+  right: 0px;
+}
+
+/* Diagonal pattern for the collapsed article */
+.gdcollapsedarticle
+{
+	background-color: #303030;
+	background-size: 50px 50px;
+}
+
+/* Hide dictionary icon */
+.gdexpandicon, .gdexpandicon:hover, .gdcollapseicon, .gdcollapseicon:hover
+{
+    cursor: pointer;
+    width: 16px;
+    background-position: center;
+    background-repeat:no-repeat;
+    vertical-align: text-bottom;
+    padding-left: -5px;
+    margin-left: 0px;
+}
+
+.gdexpandicon {
+    background-image: url('qrcx://localhost/icons/expand_article.png');
+}
+
+.gdexpandicon:hover {
+    background-image: url('qrcx://localhost/icons/expand_article_hovered.png');
+}
+
+.gdcollapseicon {
+    background-image: url('qrcx://localhost/icons/collapse_article.png');
+}
+
+.gdcollapseicon:hover {
+    background-image: url('qrcx://localhost/icons/collapse_article_hovered.png');
+}
+
+/* The first headword in multi-headword DSL article */
+.gdarticlebody > div:first-child .dsl_headwords,
+.gdarticlebody > h3:first-child
+{
+  margin-top: -3px;
+  display: inline-block;
 }
 
 /* Dictionary query error description string */
@@ -81,87 +161,7 @@ pre
   margin: 1em;
 }
 
-/********* Babylon dictionaries' classes *********/
-
-/* Transcriptions in Babylon dictionaries */
-.bgltrn:before
-{
-  content:"[";
-}
-
-.bgltrn:after
-{
-  content:"]";
-}
-
-.bgltrn { display:block; }
-
-/* Part of speech in Babylon dictionaries. Usually irrelevant,
- * therefore hidden */
-.bglpos { display: none; }
-
-/* Right-to-left text */
-.bglrtl
-{
-  text-align: right;
-  direction: rtl;
-}
-
-/******** StarDict dictionaries' classes *********/
-
-
-/* StarDict type 'h' -- Html content. We don't normally do anything here. */
-div.sdct_h
-{
-}
-
-.sdict_h_wav img
-{
-  /* Ugly hack since "vertical-align: middle;" looks _terrible_ in Qt4's webkit: */
-  vertical-align: -30%;
-}
-
-/* StarDict type 'm' -- Pure meaning. Presented as <pre> */
-pre.sdct_m
-{
-}
-
-/* StarDict type 'l' -- Pure meaning which used to be in locale encoding. */
-pre.sdct_m
-{
-}
-
-/* StarDict type 'g' -- Pango Markup */
-div.sdct_g
-{
-}
-
-/* StarDict type 't' -- Transcription */
-div.sdct_t
-{
-  font-weight: bold;
-}
-
-/* StarDict type 'y' -- Chinese YinBiao or Japanese KANA */
-div.sdct_y
-{
-}
-
-/* StarDict type 'x'. Should have xdxf_*-styled elements inside */
-div.sdct_x
-{
-}
-
-/* Blockquotes in XDXF-styled elements are used
-   for indentation purposes, see Issue #305. */
-.sdct_x blockquote
-{
-  margin: 0px;
-  padding-left: 9px;
-  display: inline-block;
-}
-
-/******** XDXF markup classes *********/
+/************* XDXF markup classes *************/
 
 div.xdxf
 {
@@ -218,7 +218,7 @@ div.xdxf
 /* Editorial comment */
 .xdxf_co, .xdxf_co_old
 {
-    color: darkslateblue;
+    color: #8679b1;
     font-style: italic;
 }
 .xdxf_co:before
@@ -324,30 +324,7 @@ div.xdxf
   color: #808080;
 }
 
-/******** SDictionary markup classes *********/
-
-.sdict_forms
-{
-  font-style: italic;
-}
-
-/* Transcription */
-.sdict_tr:before
-{
-  content:"[";
-}
-
-.sdict_tr:after
-{
-  content:"] ";
-}
-
-.sdict_tr
-{
-  font-weight: bold;
-}
-
-/************* LSA audio archives **************/
+/************* LSA audio archives *************/
 
 /* A table which contains a play icon and a word's link */
 .lsa_play
@@ -359,184 +336,6 @@ div.xdxf
 .lsa_play a
 {
   text-decoration: none;
-}
-
-/************* DSL dictionaries **************/
-
-.dsl_u
-{
-  text-decoration: underline;
-}
-
-.dsl_article
-{
-  display:inline;
-}
-
-.dsl_article font[color=c_default_color]
-{
-  color: green;
-}
-
-.dsl_m, .dsl_m0
-{
-  padding-left: 0px;
-}
-
-.dsl_m1
-{
-  padding-left: 9px;
-}
-
-.dsl_m2
-{
-  padding-left: 18px;
-}
-
-.dsl_m3
-{
-  padding-left: 27px;
-}
-
-.dsl_m4
-{
-  padding-left: 36px;
-}
-
-.dsl_m5
-{
-  padding-left: 45px;
-}
-
-.dsl_m6
-{
-  padding-left: 54px;
-}
-
-.dsl_m7
-{
-  padding-left: 63px;
-}
-
-.dsl_m8
-{
-  padding-left: 72px;
-}
-
-.dsl_m9
-{
-  padding-left: 81px;
-}
-
-.dsl_p, .dsl_p :not(a) /* DSL Feature: Enforce the style even if the children tags say otherwise, except links */
-{
-  color: green !important; /* DSL label color must have highest priority */
-  font-style: italic;
-  cursor: default;
-  font-weight: normal; /* DSL feature: labels are always of normal weight */
-}
-
-.dsl_stress_without_accent {
-  display: none;
-}
-
-.dsl_t
-{
-  font-weight: bold;
-}
-
-.dsl_headwords
-{
-  font-weight: bold;
-  margin-top: 15px;
-  margin-bottom: 10px;
-}
-
-.dsl_headwords p
-{
-  font-weight: bold;
-  font-size: 15px;
-  margin: 0;
-}
-
-.dsl_definition p
-{
-  margin: 0;
-}
-
-.dsl_opt
-{
-  display: none;
-}
-
-.dsl_opt,
-.dsl_opt .dsl_ex,
-.dsl_opt .dsl_ex :not(a),
-.dsl_opt .dsl_ex font[color] /* DSL Feature: Enforce the optional zone color even if the children tags say otherwise */
-{
-  color: gray;
-}
-
-.dsl_ex, .dsl_ex .dsl_opt
-{
-  color: gray;
-}
-
-/* Style for expand optional parts button */
-.hidden_expand_opt
-{
-  color: blue;
-  cursor: pointer;
-  vertical-align: text-bottom;
-}
-
-.dsl_s_wav img
-{
-  /* Ugly hack since "vertical-align: middle;" looks _terrible_ in Qt4's webkit: */
-  vertical-align: -30%;
-}
-
-.dsl_video .img
-{
-  display: inline-block;
-  background: url('qrcx://localhost/icons/video.png');
-  background-repeat: no-repeat;
-  /* Ugly hack since "vertical-align: middle;" looks _terrible_ in Qt4's webkit: */
-  vertical-align: -30%;
-  width: 22px;
-  height: 22px;
-  margin: 0;
-  padding: 0;
-}
-
-.dsl_video .filename
-{
-  display: none; /* by default, the file name is hidden */
-  padding-left: 5px;
-}
-
-/************* MDict dictionaries **************/
-.mdict
-{
-  margin-top: 1em;
-}
-
-.mdict a[name]
-{
-  text-decoration: none;
-  color: inherit;
-}
-
-/************* Zim dictionaries **************/
-
-.zimdict
-{
-  font-size: 110%!important;
-}
-
-.zimdict_headword
-{
-  font-weight: bold!important;
 }
 
 /************* Spelling suggestions *****************/
@@ -565,62 +364,6 @@ div.xdxf
 
 .gdstemmedsuggestion_body
 {
-}
-
-/************* Dictd articles *****************/
-.dictd_article
-{
-  /* Add some vertical space before the article */
-  margin-top: 1em;
-}
-
-.dictd_phonetic:before, .dictd_phonetic:after
-{
-  content: "\\";
-  font-style: normal;
-}
-
-.dictd_phonetic:after
-{
-  margin-left: 3px;
-}
-
-.dictd_phonetic
-{
-  font-style: italic;
-  color: #009900;
-}
-
-.dictd_article a:link
-{
-  color: #0000FF;
-}
-
-.dictserver_from
-{
-  font-size: 110%;
-  font-weight: 600;
-}
-
-/************* Epwing dictionaries *****************/
-
-.epwing_narrow_font
-{
-  width: 7px;
-  height: 13px;
-  vertical-align: -15%;
-}
-
-.epwing_wide_font
-{
-  width: 13px;
-  height: 13px;
-  vertical-align: -15%;
-}
-
-.epwing_article
-{
-  display:inline;
 }
 
 /************* Websites *****************/
@@ -703,11 +446,589 @@ div.xdxf
   text-decoration: none;
 }
 
-/************* MediaWiki articles *****************
- The following consist of excerpts from different .css files edited
- with a .mwiki prepended to each record.
-*/
+/************* DSL dictionaries **************/
 
+.dsl_i font
+{
+  color: deepskyblue;
+}
+
+.dsl_u
+{
+  text-decoration: underline;
+}
+
+.dsl_article
+{
+  display:inline;
+}
+
+.dsl_article font[color=c_default_color]
+{
+  color: green;
+}
+
+.dsl_m, .dsl_m0
+{
+  padding-left: 0px;
+}
+
+.dsl_m1
+{
+  padding-left: 9px;
+}
+
+.dsl_m2
+{
+  padding-left: 18px;
+}
+
+.dsl_m3
+{
+  padding-left: 27px;
+}
+
+.dsl_m4
+{
+  padding-left: 36px;
+}
+
+.dsl_m5
+{
+  padding-left: 45px;
+}
+
+.dsl_m6
+{
+  padding-left: 54px;
+}
+
+.dsl_m7
+{
+  padding-left: 63px;
+}
+
+.dsl_m8
+{
+  padding-left: 72px;
+}
+
+.dsl_m9
+{
+  padding-left: 81px;
+}
+
+.dsl_p, .dsl_p :not(a) /* DSL Feature: Enforce the style even if the children tags say otherwise, except links */
+{
+  color: green !important; /* DSL label color must have highest priority */
+  font-style: italic;
+  cursor: default;
+  font-weight: normal; /* DSL feature: labels are always of normal weight */
+}
+
+.dsl_stress_without_accent {
+  display: none;
+}
+
+.dsl_t
+{
+	color: #8679b1;
+  font-weight: bold;
+}
+
+.dsl_headwords
+{
+  font-weight: bold;
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
+
+.dsl_headwords p
+{
+  font-weight: bold;
+  font-size: 15px;
+  margin: 0;
+}
+
+.dsl_definition p
+{
+  margin: 0;
+}
+
+.dsl_opt
+{
+  display: none;
+}
+
+.dsl_opt,
+.dsl_opt .dsl_ex,
+.dsl_opt .dsl_ex :not(a),
+.dsl_opt .dsl_ex font[color] /* DSL Feature: Enforce the optional zone color even if the children tags say otherwise */
+{
+  color: gray;
+}
+
+.dsl_ex, .dsl_ex .dsl_opt
+{
+  color: gray;
+}
+
+/* Style for expand optional parts button */
+.hidden_expand_opt
+{
+  color: blue;
+  cursor: pointer;
+  vertical-align: text-bottom;
+}
+
+.dsl_s_wav img
+{
+  /* Ugly hack since "vertical-align: middle;" looks _terrible_ in Qt4's webkit: */
+  vertical-align: -30%;
+}
+
+.dsl_video .img
+{
+  display: inline-block;
+  background: url('qrcx://localhost/icons/video.png');
+  background-repeat: no-repeat;
+  /* Ugly hack since "vertical-align: middle;" looks _terrible_ in Qt4's webkit: */
+  vertical-align: -30%;
+  width: 22px;
+  height: 22px;
+  margin: 0;
+  padding: 0;
+}
+
+.dsl_video .filename
+{
+  display: none; /* by default, the file name is hidden */
+  padding-left: 5px;
+}
+
+/************* Longman Dictionary 6 *************/
+.popup-button {
+background-color:#333333 !important;
+color:#ffffff !important;
+}
+
+.popup-button:hover {
+background-color:#ffffff !important;
+color:#000000 !important;
+}
+
+.entry,
+.example,
+.collocate,
+.collgloss,
+.sense,
+.neutral,
+.exas li {
+  color: gainsboro;
+}
+
+.hyphenation,
+.homnum,
+.frequent {
+  color: #ffeb3b;
+}
+
+.pron,
+.amevarpron {
+  color: #d32f2f;
+  font-weight: bold;
+}
+
+.gram,
+.registerlab {
+  color: blue;
+}
+
+.propformprep,
+.expr,
+.colloc,
+.collo,
+.exp,
+.display,
+.nodeword {
+  color: red;
+}
+
+.sensenum {
+  color: red;
+}
+
+.collobox {
+  background-color: #00348f;
+  border-color: #448aff;
+}
+
+.thesbox {
+  background-color: #ffeb3b;
+  border-color: #ffeb3b;
+}
+
+.grambox .expl,
+.grambox .compareword,
+.collobox .section,
+.thesbox .section {
+  background-color: #000000 !important;
+}
+
+.secheading {
+  background-color: #4f008f !important;
+}
+
+/************* Dictd articles *****************/
+.dictd_article
+{
+  /* Add some vertical space before the article */
+  margin-top: 1em;
+}
+
+.dictd_phonetic:before, .dictd_phonetic:after
+{
+  content: "\\";
+  font-style: normal;
+}
+
+.dictd_phonetic:after
+{
+  margin-left: 3px;
+}
+
+.dictd_phonetic
+{
+  font-style: italic;
+  color: #009900;
+}
+
+.dictd_article a:link
+{
+  color: #0000FF;
+}
+
+.dictserver_from
+{
+  font-size: 110%;
+  font-weight: 600;
+}
+
+/************* Epwing dictionaries *****************/
+
+.epwing_narrow_font
+{
+  width: 7px;
+  height: 13px;
+  vertical-align: -15%;
+}
+
+.epwing_wide_font
+{
+  width: 13px;
+  height: 13px;
+  vertical-align: -15%;
+}
+
+.epwing_article
+{
+  display:inline;
+}
+
+/********** Slob dictionaries ***********/
+
+.slobdict img.imgtex
+{
+    vertical-align: baseline !important;
+}
+
+/************* GLS dictionaries **************/
+
+.glsdict_headwords
+{
+  font-weight: bold;
+  margin-top: 15px;
+  margin-bottom: 10px;
+  font-size: 116%;
+}
+
+.gls_wav img
+{
+  /* Ugly hack since "vertical-align: middle;" looks _terrible_ in Qt4's webkit: */
+  vertical-align: -30%;
+}
+
+/************* Zim dictionaries *************/
+
+.zimdict
+{
+  font-size: 110%!important;
+}
+
+.zimdict_headword
+{
+  font-weight: bold!important;
+}
+
+/************* MDict dictionaries *************/
+.mdict
+{
+  margin-top: 1em;
+}
+
+.mdict a[name]
+{
+  text-decoration: none;
+  color: inherit;
+}
+
+/************* OALD9 Dictionary *************/
+.mdict,
+.mdict ol,
+.head-jump-pos,
+.head-jump-entry,
+.h-g,
+.sn-gs,
+.sn-g,
+.x-gs,
+.xg,
+.rx-g,
+.x,
+.num,
+.def,
+.label-g,
+.collapse {
+  color: #a3a3a3;
+}
+
+.mdict i {
+  color: #a3a3a3 !important;
+}
+
+.head-jump-pos a {
+  display: inline-block;
+  background-color: green;
+  color: gainsboro;
+  padding-top: 2px;
+  padding-bottom: 3px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin-right: 3px;
+  margin-bottom: 3px;
+  text-decoration: none;
+  font-size: 90%;
+  border-radius: 2px;
+}
+
+.mdict .if-gs {
+  color: #e7003e;
+}
+
+.mdict .gram-g {
+  color: #ff7400;
+}
+
+.mdict .top-container {
+  line-height: 1.2em;
+}
+
+.mdict .collapse,
+.mdict .webtop-g {
+  background-color: #03a9f4;
+  border-left: 3px solid #03a9f4;
+}
+
+.mdict .collapse .body .h1,
+.mdict .collapse .body .deflist .li .eb {
+  color: #d32f2f;
+}
+
+.mdict .collapse .body .inline .li {
+  color: #512da8;
+}
+
+/* Fix numbered list */
+.mdict ol {
+  list-style-type: none;
+}
+
+.mdict ol li {
+  counter-increment: step-counter;
+}
+
+.mdict ol li::before {
+  content: counter(step-counter);
+  color: #e7003e;
+  font-weight: bold;
+}
+
+/* Fix phonetics */
+
+.mdict .phon {
+  color: #e7003e;
+  font-weight: bold;
+}
+
+/******** StarDict dictionaries' classes *********/
+.sdct_h .normal {
+	font-family: Arial;
+	font-size: 10pt;
+	color:#8679b1;
+	font-weight: normal;
+	text-decoration:none;
+}
+
+.sdct_h .irregular {
+	font-family: Arial;
+	font-size: 10pt;
+	color:#FF0000;
+	font-weight: bold;
+	text-decoration:none;
+}
+
+.sdct_h .orto {
+	font-family: Arial;
+	font-size: 10pt;
+	color:#8679b1;
+	font-weight: normal;
+	text-decoration:none;
+}
+
+.sdct_h .archaic {
+	font-family: Arial;
+	font-size: 10pt;
+	color:#800080;
+	font-weight: normal;
+	text-decoration:none;
+}
+
+.sdct_h .notused {
+	font-family: Arial;
+	font-size: 10pt;
+	color:#808080;
+	font-weight: normal;
+	text-decoration:none;
+}
+
+.sdct_h .pronoun {
+	font-family: Arial;
+	font-size: 10pt;
+	color:#008000;
+	font-weight: normal;
+	text-decoration:none;
+}
+
+
+.sdct_h > table {
+	border: 1px solid #444444;
+	border-collapse: collapse;
+}
+
+.sdct_h td.verbtable {
+	border: 1px solid #444444;
+}
+
+.sdct_h th {
+	background-color: #A6C9EF;
+	font-weight: bold;
+}
+
+.sdct_h .mini {
+	font-size: 8pt; font-weight: normal; color: #808080;
+}
+
+.sdct_h div.spacerline {
+	clear: both;
+	margin-left: 8px;
+	width:100%;
+	border-top: 1px solid #ccc;
+}
+
+.sdct_h div.spacer {
+	clear: both;
+}
+
+.sdct_h div.float {
+	margin-left: 8px;
+	float: left;
+}
+
+.sdct_h div.float400 {
+	margin-left: 8px;
+	float: left;
+	width: 400px;
+}
+
+.sdct_h div.float250color {
+	margin-left: 8px;
+	float: left;
+	width: 250px;
+	border-style: dashed;
+	border-color:#8679b1;
+	border-collapse:collapse;
+	border-width:1px;
+	background-color:#eeeeee;
+	padding: 8px 8px 8px 8px;
+}
+
+/* Blockquotes in XDXF-styled elements are used for indentation purposes, see Issue #305. */
+.sdct_x blockquote {
+  margin: 0px;
+  padding-left: 9px;
+  display: inline-block;
+}
+
+/************* SDictionary markup classes *************/
+
+.sdict_forms
+{
+  font-style: italic;
+}
+
+/* Transcription */
+.sdict_tr:before
+{
+  content:"[";
+}
+
+.sdict_tr:after
+{
+  content:"] ";
+}
+
+.sdict_tr
+{
+  font-weight: bold;
+}
+
+/************* Babylon dictionaries' classes *************/
+/* Transcriptions in Babylon dictionaries */
+.bgltrn:before
+{
+  content:"[";
+}
+
+.bgltrn:after
+{
+  content:"]";
+}
+
+.bgltrn { color: #808080; font-size: 12px; display: inline; }
+
+/* Part of speech in Babylon dictionaries. Usually irrelevant,
+ * therefore hidden */
+.bglpos { color: black; font-weight: bold; font-size: 11px; background: #F0EDED; display: inline; }
+
+/* Right-to-left text */
+.bglrtl
+{
+  text-align: right;
+  direction: rtl;
+}
+
+/************* Wikipedia articles *****************
+ The following consist of excerpts from different .css files edited
+ with a .mwiki prepended to each record.*/
 .mwiki
 {
   /* Add some vertical space before the article */
@@ -745,7 +1066,7 @@ div.xdxf
 	margin: 1em 5%;
 	padding: 0.5em 2.5%;
 	border: solid 1px #ddd;
-	background-color: #fcfcfc;
+	background-color: #d3d3d3;
 }
 
 /* Edit section links */
@@ -1142,7 +1463,7 @@ body {
 }
 .mwiki a {
 	text-decoration: none;
-	color: #002bb8;
+	color: coral;
 	background: none;
 }
 .mwiki a:visited {
@@ -1153,6 +1474,7 @@ body {
 }
 .mwiki a:hover {
 	text-decoration: underline;
+  color: red;
 }
 .mwiki a.stub {
 	color: #772233;
@@ -1171,6 +1493,7 @@ body {
 .mwiki p {
 	margin: .4em 0 .5em 0;
 	line-height: 1.5em;
+    text-align: justify;
 }
 .mwiki p img {
 	margin: 0;
@@ -1437,7 +1760,7 @@ in the bottom-right corner of the content area */
 .mwiki .toc,
 .mwiki .mw-warning {
 	border: 1px solid #aaa;
-	background-color: #f9f9f9;
+	background-color: #111;
 	padding: 5px;
 	font-size: 95%;
 }
@@ -1508,13 +1831,13 @@ in the bottom-right corner of the content area */
 .mwiki div.thumb {
 	margin-bottom: .5em;
 	border-style: solid;
-	border-color: white;
+	border-color: #202020;
 	width: auto;
 }
 .mwiki div.thumbinner {
 	border: 1px solid #ccc;
 	padding: 3px !important;
-	background-color: #f9f9f9;
+	background-color: black;
 	font-size: 94%;
 	text-align: center;
 	overflow: hidden;
@@ -2663,22 +2986,22 @@ in bg url to hide it from iemac */
   padding-right:1em;
 }
 .mwiki .navbox, .mwiki .navbox-subgroup {
-  background:#fdfdfd;     /* Background color */
+  background: #000;     /* Background color */
 }
 .mwiki .navbox-list {
-  border-color:#fdfdfd;   /* Must match background color */
+  border-color:#000;   /* Must match background color */
 }
 .mwiki .navbox-title, .mwiki table.navbox th {
-  background:#ccccff;     /* Level 1 color */
+  background:#303030;     /* Level 1 color */
 }
 .mwiki .navbox-abovebelow, .mwiki .navbox-group, .mwiki .navbox-subgroup .navbox-title {
-  background:#ddddff;     /* Level 2 color */
+  background:#101010;     /* Level 2 color */
 }
 .mwiki .navbox-subgroup .navbox-group, .mwiki .navbox-subgroup .navbox-abovebelow {
-  background:#e6e6ff;     /* Level 3 color */
+  background:#202020;     /* Level 3 color */
 }
 .mwiki .navbox-even {
-  background:#f7f7f7;     /* Even row striping */
+  background:#000000;     /* Even row striping */
 }
 .mwiki .navbox-odd {
   background:transparent; /* Odd row striping */
@@ -2693,8 +3016,6 @@ in bg url to hide it from iemac */
 .mwiki .navbox .collapseButton { /* In navboxes, the show/hide button balances the vde links from */
     width: 6em;           /* [[Template:Tnavbar]], so they need to be the same width.      */
 }
-
-
 
 /* Infobox template style */
 .mwiki .infobox {
@@ -2817,10 +3138,11 @@ in bg url to hide it from iemac */
 
 /* Article message box styles */
 .mwiki table.ambox {            /* 10% = Will not overlap with other elements */
+    color: gainsboro;
     margin: -1px 10% 0px;    /* -1px = Single border between stacked boxes in all browsers */
     border: 1px solid #aaa;
     border-left: 10px solid #1e90ff;    /* Default "notice" blue */
-    background: #fbfbfb;
+    background: #202020;
 }
 .mwiki .ambox th.mbox-text,
 .mwiki .ambox td.mbox-text {            /* The message body cell(s) */
@@ -2832,6 +3154,14 @@ in bg url to hide it from iemac */
 .mwiki .ambox td.mbox-imageright {      /* The right image cell */
     padding: 2px 0.5em 2px 0;    /* 0px left, 0.5em right */
 }
+
+/* Wikimedia Commons, Wikiquote, Wikisource */
+/* .mwiki .sistersitebox,
+.mwiki table.mbox-small tbody {
+  color: gainsboro;
+  border: 1px solid #000;
+  background: #202020;
+} */
 
 /* Standard Navigationsleisten, aka box hiding thingy from .de.  Documentation at [[Wikipedia:NavFrame]]. */
 .mwiki div.NavFrame {
@@ -2881,7 +3211,6 @@ in bg url to hide it from iemac */
     font-size: 90%;
 }
 
-
 /****** Wiktionary-specific excerpts *********/
 
 .mwiki .audiolink a {
@@ -2894,44 +3223,10 @@ in bg url to hide it from iemac */
 
 .mwiki .infl-inline { display: inline }
 .mwiki .infl-table { display: none }
-/****default hide dict icon ***/
-.gddicticon{display:none;}
 
-.gdexpandicon {
-    cursor:pointer;
-    width:16px;
-    height:16px;
-    vertical-align: text-bottom;
-    background-image:url('qrcx://localhost/icons/arrow.png');
-}
+/*************************************************************************************/
 
-.gdcollapseicon {
-    cursor:pointer;
-    width:16px;
-    height:16px;
-    vertical-align: text-bottom;
-    background-image:url('qrcx://localhost/icons/downarrow.png');
-}
-
-/********** Slob dictionaries ***********/
-
-.slobdict img.imgtex
-{
-    vertical-align: baseline !important;
-}
-
-/************* GLS dictionaries **************/
-
-.glsdict_headwords
-{
-  font-weight: bold;
-  margin-top: 15px;
-  margin-bottom: 10px;
-  font-size: 116%;
-}
-
-.gls_wav img
-{
-  /* Ugly hack since "vertical-align: middle;" looks _terrible_ in Qt4's webkit: */
-  vertical-align: -30%;
+/************* Langenscheidt Grosswoerterbuch: Deutsch als Fremdsprache *************/
+deutsch, die {
+  color: #a3a3a3;
 }

@@ -40,3 +40,5 @@ GoldenDict.xcodeproj/
 *.opensdf
 *.suo
 *.vcxproj.user
+
+*.stash
